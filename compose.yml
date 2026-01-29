@@ -1,0 +1,17 @@
+name: prudential-prototype-universal-launchpad
+
+services:
+  postgres:
+    image: postgres:18.1
+    volumes:
+      - postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+
+volumes:
+  postgres:
