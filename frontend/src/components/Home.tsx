@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const API_URL = 'http://localhost:3000';
+import { API_BASE_URL } from '../config/api';
 
 export function Home() {
   const [message, setMessage] = useState<string>('');
@@ -12,7 +11,7 @@ export function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_URL}/`);
+      const response = await fetch(`${API_BASE_URL}/`);
       if (!response.ok) {
         throw new Error('Failed to fetch message');
       }

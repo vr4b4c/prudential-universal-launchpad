@@ -1,10 +1,9 @@
 import { QuizResponse, QuizUpdateRequest } from '../types/quiz';
-
-const API_URL = 'http://localhost:3000';
+import { API_BASE_URL } from '../config/api';
 
 export const quizApi = {
   async startQuiz(): Promise<QuizResponse> {
-    const response = await fetch(`${API_URL}/quiz`, {
+    const response = await fetch(`${API_BASE_URL}/quiz`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +18,7 @@ export const quizApi = {
   },
 
   async getQuiz(quizId: string): Promise<QuizResponse> {
-    const response = await fetch(`${API_URL}/quiz/${quizId}`, {
+    const response = await fetch(`${API_BASE_URL}/quiz/${quizId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +36,7 @@ export const quizApi = {
     quizId: string,
     updateRequest: QuizUpdateRequest,
   ): Promise<QuizResponse> {
-    const response = await fetch(`${API_URL}/quiz/${quizId}`, {
+    const response = await fetch(`${API_BASE_URL}/quiz/${quizId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
