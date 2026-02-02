@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Question } from '../types/wizard';
+import { Question } from '../types/quiz';
 
 interface QuestionTextProps {
   question: Question;
@@ -12,18 +12,14 @@ export function QuestionText({ question, onSubmit, isLoading }: QuestionTextProp
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (answer.trim() || !question.isRequired) {
-      onSubmit(answer);
-    }
+    onSubmit(answer);
+    setAnswer('');
   };
-
-  const canSubmit = !question.isRequired || answer.trim().length > 0;
 
   return (
     <form onSubmit={handleSubmit} className="question-form">
       <label htmlFor="text-answer" className="question-label">
         {question.text}
-        {question.isRequired && <span className="required">*</span>}
       </label>
       <textarea
         id="text-answer"
@@ -34,11 +30,7 @@ export function QuestionText({ question, onSubmit, isLoading }: QuestionTextProp
         className="question-textarea"
         disabled={isLoading}
       />
-      <button
-        type="submit"
-        disabled={!canSubmit || isLoading}
-        className="question-submit"
-      >
+      <button type="submit" disabled={isLoading} className="question-submit">
         {isLoading ? 'Submitting...' : 'Next'}
       </button>
     </form>

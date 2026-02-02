@@ -48,7 +48,7 @@ export function Home() {
             {loading ? 'Loading...' : 'Refresh'}
           </button>
           <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid #ddd' }}>
-            <Link to="/wizard" style={{ 
+            <Link to="/quiz" style={{ 
               display: 'inline-block',
               padding: '0.75rem 2rem',
               background: '#764ba2',
@@ -57,7 +57,7 @@ export function Home() {
               borderRadius: '8px',
               transition: 'background 0.3s ease'
             }}>
-              Start Wizard
+              Start Quiz
             </Link>
           </div>
         </div>

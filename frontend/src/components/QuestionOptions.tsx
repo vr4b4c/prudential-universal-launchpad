@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Question } from '../types/wizard';
+import { Question } from '../types/quiz';
 
 interface QuestionOptionsProps {
   question: Question;
@@ -12,18 +12,17 @@ export function QuestionOptions({ question, onSubmit, isLoading }: QuestionOptio
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedOption || !question.isRequired) {
+    if (selectedOption) {
       onSubmit(selectedOption);
     }
   };
 
-  const canSubmit = !question.isRequired || selectedOption.length > 0;
+  const canSubmit = selectedOption.length > 0;
 
   return (
     <form onSubmit={handleSubmit} className="question-form">
       <label className="question-label">
         {question.text}
-        {question.isRequired && <span className="required">*</span>}
       </label>
       <div className="options-list">
         {question.options?.map((option) => (

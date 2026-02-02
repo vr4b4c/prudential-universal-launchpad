@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './components/Home';
-import { Wizard } from './components/Wizard';
+import { Quiz } from './components/Quiz';
 import './App.css';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/wizard" element={<Wizard />} />
+      <Route path="/quiz" element={<Quiz />} />
     </Routes>
   );
 }
