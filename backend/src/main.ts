@@ -5,7 +5,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'http://localhost:5173', // Vite default port
+    origin: 'http://localhost:5173',
+    origin: 'https://prudential-universal-launchpad-fron.vercel.app',
     credentials: true,
   });
   await app.listen(3000);
