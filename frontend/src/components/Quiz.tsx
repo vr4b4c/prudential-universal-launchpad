@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { quizApi } from '../services/quizApi';
-import { Question } from '../types/quiz';
+import { Question, QuizUpdateRequest } from '../types/quiz';
 import { QuestionText } from './QuestionText';
 import { QuestionOptions } from './QuestionOptions';
 
@@ -34,10 +34,9 @@ export function Quiz() {
     }
   };
 
-  const buildUpdateRequest = (questionsWithNewAnswer: Question[]): { questions: { type: string; text: string; options?: string[]; answer: string }[] } => ({
+  const buildUpdateRequest = (questionsWithNewAnswer: Question[]): QuizUpdateRequest => ({
     questions: questionsWithNewAnswer.map((q) => ({
       type: q.type,
-
       text: q.text,
       options: q.options,
       answer: q.answer ?? '',
