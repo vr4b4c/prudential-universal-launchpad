@@ -1,13 +1,10 @@
+import { API_BASE_URL, apiFetch } from '../config/api';
 import { QuizResponse, QuizUpdateRequest } from '../types/quiz';
-import { API_BASE_URL } from '../config/api';
 
 export const quizApi = {
   async startQuiz(): Promise<QuizResponse> {
-    const response = await fetch(`${API_BASE_URL}/quiz`, {
+    const response = await apiFetch(`${API_BASE_URL}/quiz`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     });
 
     if (!response.ok) {
@@ -18,11 +15,8 @@ export const quizApi = {
   },
 
   async getQuiz(quizId: string): Promise<QuizResponse> {
-    const response = await fetch(`${API_BASE_URL}/quiz/${quizId}`, {
+    const response = await apiFetch(`${API_BASE_URL}/quiz/${quizId}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     });
 
     if (!response.ok) {
@@ -36,11 +30,8 @@ export const quizApi = {
     quizId: string,
     updateRequest: QuizUpdateRequest,
   ): Promise<QuizResponse> {
-    const response = await fetch(`${API_BASE_URL}/quiz/${quizId}`, {
+    const response = await apiFetch(`${API_BASE_URL}/quiz/${quizId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(updateRequest),
     });
 

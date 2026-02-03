@@ -3,8 +3,8 @@ import { repl } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 // Make entities available globally in REPL
-// import { Onboarding } from './onboarding/entities/onboarding.entity';
-// (global as any).Onboarding = Onboarding;
+import { User } from './auth/entities/user.entity';
+(global as any).User = User;
 
 async function bootstrap() {
   await repl(AppModule);
