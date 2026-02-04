@@ -75,16 +75,26 @@ export function Home() {
           <button onClick={fetchMessage} disabled={loading}>
             {loading ? 'Loading...' : 'Refresh'}
           </button>
-          <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid #ddd' }}>
+          <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid #e0e0e0' }}>
             <Link to="/quiz" style={{ 
               display: 'inline-block',
-              padding: '0.75rem 2rem',
-              background: '#764ba2',
+              padding: '0.875rem 2rem',
+              background: '#007AC1',
               color: 'white',
               textDecoration: 'none',
-              borderRadius: '8px',
-              transition: 'background 0.3s ease'
-            }}>
+              borderRadius: '6px',
+              fontWeight: '500',
+              transition: 'background 0.2s ease, transform 0.1s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#005a8f';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#007AC1';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+            >
               Start Quiz
             </Link>
           </div>

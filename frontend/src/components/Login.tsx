@@ -53,7 +53,7 @@ export function Login() {
           )}
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '1rem' }}>
-              <label htmlFor="username" style={{ display: 'block', marginBottom: '0.25rem' }}>
+              <label htmlFor="username" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: '#333' }}>
                 Username
               </label>
               <input
@@ -65,13 +65,25 @@ export function Login() {
                 required
                 style={{
                   width: '100%',
-                  padding: '0.5rem',
+                  padding: '0.875rem',
                   boxSizing: 'border-box',
+                  border: '1px solid #ddd',
+                  borderRadius: '6px',
+                  fontSize: '1rem',
+                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#007AC1';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(0, 122, 193, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#ddd';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
-              <label htmlFor="password" style={{ display: 'block', marginBottom: '0.25rem' }}>
+              <label htmlFor="password" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: '#333' }}>
                 Password
               </label>
               <input
@@ -83,8 +95,20 @@ export function Login() {
                 required
                 style={{
                   width: '100%',
-                  padding: '0.5rem',
+                  padding: '0.875rem',
                   boxSizing: 'border-box',
+                  border: '1px solid #ddd',
+                  borderRadius: '6px',
+                  fontSize: '1rem',
+                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#007AC1';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(0, 122, 193, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#ddd';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </div>
