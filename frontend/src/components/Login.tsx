@@ -11,7 +11,7 @@ export function Login() {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/quiz';
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/';
 
   // Navigate after auth state has committed (avoids ProtectedRoute seeing stale unauthenticated state)
   useEffect(() => {
