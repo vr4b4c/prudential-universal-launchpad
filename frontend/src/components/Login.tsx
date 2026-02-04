@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -7,10 +7,19 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const [pendingRedirect, setPendingRedirect] = useState(false);
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/';
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/quiz';
+
+  // Navigate after auth state has committed (avoids ProtectedRoute seeing stale unauthenticated state)
+  useEffect(() => {
+    if (pendingRedirect && isAuthenticated) {
+      setPendingRedirect(false);
+      navigate(from, { replace: true });
+    }
+  }, [pendingRedirect, isAuthenticated, navigate, from]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -18,7 +27,7 @@ export function Login() {
     setLoading(true);
     try {
       await login(username, password);
-      navigate(from, { replace: true });
+      setPendingRedirect(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
     } finally {

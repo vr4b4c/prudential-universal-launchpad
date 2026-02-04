@@ -62,9 +62,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           (err as { message?: string }).message || 'Invalid username or password',
         );
       }
-      const data = (await response.json()) as { access_token: string };
-      setToken(data.access_token);
-      localStorage.setItem('token', data.access_token);
+      const data = (await response.json()) as { accessToken: string };
+      setToken(data.accessToken);
+      localStorage.setItem('token', data.accessToken);
     },
     [],
   );
