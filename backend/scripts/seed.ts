@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { Client } from 'pg';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 
 const defaultUsers = [{ username: 'admin', password: 'password' }];
 
